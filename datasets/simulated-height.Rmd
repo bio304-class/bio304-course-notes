@@ -1,0 +1,30 @@
+---
+title: "Simulated data for US Male Height"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+```
+
+Based on:
+
+ US Dept. of Health and Human Services; et al. (August 2016). "Anthropometric Reference Data for Children and Adults: United States, 2011–2014" (PDF). National Health Statistics Reports. 11. https://www.cdc.gov/nchs/data/series/sr_03/sr03_039.pdf
+
+
+```{r}
+# male mean height and sd in centimeters
+male.mean.ht <- 175.7
+se.mean <- 0.21
+sample.sz <- 5232
+sd.ht <- sqrt(sample.sz) * se.mean
+```
+
+```{r}
+set.seed(20171112)
+ht.data <- data_frame(height = rnorm(25000, mean = male.mean.ht, sd = sd.ht))
+```
+
+```{r}
+write_csv(ht.data, "simulated-US-male-height.csv")
+```
