@@ -48,9 +48,9 @@
 
 * Generate publication quality figures and tables
 
-* Understand and apply statistical tests and models such as t-tests, ANOVA, linear regression, chi-squared tests
+* Understand and apply various descriptive statistics for describing trends in data
 
-* Understand and apply data summarization methods such as cluster analysis and principal components analysis
+* Understand and apply statistical tests and models such as t-tests, ANOVA, linear regression, chi-squared tests
 
 * Carry out data exploration and analyses in a reproducible and documentable way
 
