@@ -3,14 +3,6 @@
 % Fall 2018
 
 
-## Agenda
-
-* Introduce the teaching team
-
-* What this course is about
-
-* Example data story: The Sinking of the Titanic
-
 ## Teaching Team
 
 * Dr. Paul Magwene
