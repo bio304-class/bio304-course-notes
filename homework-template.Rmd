@@ -1,0 +1,63 @@
+---
+title: "Bio 304: Assignment XX -- Topic Name"
+author: "Your Name and NetID here!"
+output:
+  html_document:
+    highlight: default
+    theme: readable
+    fig_caption: true
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, prompt = TRUE, eval = TRUE, 
+                      warning = TRUE, comment=NA, cache = FALSE,
+                      fig.width = 6, fig.height = 4)
+```
+
+
+# Instructions
+
+Create an R Markdown document and answer the questions below using code blocks that generate the correct outputs. Feel free to also use explanatory text in your markdown document, however **each of your solutions should show how to generate the answer using R code**.
+
+When completed, submit your assignment via the appropriate submission section on Sakai.
+
+
+# Question 1
+
+a. Question 1a
+ 
+    ```{r}
+    # your code here
+    ```
+  
+    Discussion of answer as needed.
+ 
+
+b. Question 1b 
+ 
+    ```{r}
+    # your code here
+    ```
+  
+    Discussion of answer as needed.
+  
+# Question 2
+
+a. Question 2a
+ 
+    ```{r}
+    # your code here
+    ```
+  
+    Discussion of answer as needed.
+ 
+
+b. Question 2b 
+ 
+    ```{r}
+    # your code here
+    ```
+  
+    Discussion of answer as needed.
+
