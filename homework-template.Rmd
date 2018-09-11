@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, prompt = TRUE, eval = TRUE, 
+knitr::opts_chunk$set(echo = TRUE, prompt = FALSE, eval = TRUE, 
                       warning = TRUE, comment=NA, cache = FALSE,
                       fig.width = 6, fig.height = 4)
 ```
@@ -31,7 +31,7 @@ When completed, submit your assignment via the appropriate submission section on
 
 * Format your code for readability.  This will help you debug your code and will help us grade your code, increasing the possibility you will get partial credit if you make a mistake somewhere along the line.
 
-* Use headers to delineate different sections or questions.
+* Use headers and bullet points to delineate different sections, questions, and sub-questions.
 
 * Libraries only need to be loaded once.
 
@@ -42,7 +42,9 @@ When completed, submit your assignment via the appropriate submission section on
 
 # Question 1
 
-a. Question 1a: Repeat or summarize the question here.
+###  Question 1a
+
+Repeat or summarize the question here.
  
 ```{r}
 # your code here
@@ -51,7 +53,9 @@ a. Question 1a: Repeat or summarize the question here.
 Discussion of answer as needed.
  
 
-b. Question 1b: Repeat or summarize the question here. 
+### Question 1b
+
+Repeat or summarize the question here. 
  
 ```{r}
 # your code here
@@ -61,7 +65,9 @@ Discussion of answer as needed.
   
 # Question 2
 
-a. Question 2a: Repeat or summarize the question here.
+### Question 2a
+
+Repeat or summarize the question here.
  
 ```{r}
 # your code here
@@ -70,11 +76,19 @@ a. Question 2a: Repeat or summarize the question here.
 Discussion of answer as needed.
  
 
-b. Question 2b: Repeat or summarize the question here. 
+### Question 2b
+
+This question has several sub-questions
+
+  * Sub-question 1: summarize the question here 
  
 ```{r}
 # your code here
 ```
-  
-Discussion of answer as needed.
+
+  * Sub-question 2: summarize the question here
+
+```{r}
+# your code here
+```  
 
