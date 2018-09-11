@@ -27,18 +27,18 @@ When completed, submit your assignment via the appropriate submission section on
 
 a. Question 1a
  
-    ```{r}
-    # your code here
-    ```
+```{r}
+# your code here
+```
   
     Discussion of answer as needed.
  
 
 b. Question 1b 
  
-    ```{r}
-    # your code here
-    ```
+```{r}
+# your code here
+```
   
     Discussion of answer as needed.
   
@@ -46,18 +46,18 @@ b. Question 1b
 
 a. Question 2a
  
-    ```{r}
-    # your code here
-    ```
+```{r}
+# your code here
+```
   
     Discussion of answer as needed.
  
 
 b. Question 2b 
  
-    ```{r}
-    # your code here
-    ```
+```{r}
+# your code here
+```
   
     Discussion of answer as needed.
 
