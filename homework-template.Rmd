@@ -19,11 +19,11 @@ knitr::opts_chunk$set(echo = TRUE, prompt = FALSE, eval = TRUE,
 
 Create an R Markdown document and answer the questions below using code blocks that generate the correct outputs. Feel free to also use explanatory text in your markdown document, however **each of your solutions should show how to generate the answer using R code**.
 
-Please name your file in the following manner:
+**Please name your file in the following manner:**
 
 * `Lastname_Firstinitial_Assignment0X.Rmd` -- For example: `Magwene_P_Assignment01.Rmd`
 
-When completed, submit your assignment via the appropriate submission section on Sakai.
+**When completed, submit your Markdown file (file ending in `.Rmd`)** via the appropriate submission section on Sakai.
 
 ## Tips
 
