@@ -20,44 +20,62 @@ knitr::opts_chunk$set(echo = TRUE, prompt = TRUE, eval = TRUE,
 
 Create an R Markdown document and answer the questions below using code blocks that generate the correct outputs. Feel free to also use explanatory text in your markdown document, however **each of your solutions should show how to generate the answer using R code**.
 
+Please name your file in the following manner:
+
+* `Lastname_Firstinitial_Assignment0X.Rmd` -- For example: `Magwene_P_Assignment01.Rmd`
+
 When completed, submit your assignment via the appropriate submission section on Sakai.
+
+## Tips
+
+* There should be **one code block per (sub)question**. A good rule of thumb is that each unit of code that produces a "stand alone" answer should be in its own code block.
+
+* Format your code for readability.  This will help you debug your code and will help us grade your code, increasing the possibility you will get partial credit if you make a mistake somewhere along the line.
+
+* Use headers to delineate different sections or questions.
+
+* Libraries only need to be loaded once.
+
+* Data structures and variables defined in one code block don't need to be repeated in subsequent code blocks (unless they've changed)
+
+* **Knit your code** -- knitting your code creates a "clean" environment in which your code is evaluated and run, helping you to check that your notebook produces the answers you expect.
 
 
 # Question 1
 
-a. Question 1a
+a. Question 1a: Repeat or summarize the question here.
  
 ```{r}
 # your code here
 ```
   
-    Discussion of answer as needed.
+Discussion of answer as needed.
  
 
-b. Question 1b 
+b. Question 1b: Repeat or summarize the question here. 
  
 ```{r}
 # your code here
 ```
   
-    Discussion of answer as needed.
+Discussion of answer as needed.
   
 # Question 2
 
-a. Question 2a
+a. Question 2a: Repeat or summarize the question here.
  
 ```{r}
 # your code here
 ```
   
-    Discussion of answer as needed.
+Discussion of answer as needed.
  
 
-b. Question 2b 
+b. Question 2b: Repeat or summarize the question here. 
  
 ```{r}
 # your code here
 ```
   
-    Discussion of answer as needed.
+Discussion of answer as needed.
 
