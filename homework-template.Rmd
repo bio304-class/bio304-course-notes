@@ -4,7 +4,6 @@ author: "Your Name and NetID here!"
 output:
   html_document:
     highlight: default
-    theme: readable
     fig_caption: true
 
 ---
