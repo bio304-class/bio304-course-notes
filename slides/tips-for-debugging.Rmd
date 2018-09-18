@@ -1,0 +1,35 @@
+---
+title: "Bio 304: Tips for debugging your code!"
+author: "Paul M. Magwene"
+output: beamer_presentation
+fontsize: "9pt"    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+
+## What does this code do? Where's the bug?
+
+```{r, echo=TRUE, eval=FALSE}
+ggplot(iris,aes(x=Sepal.Width,y=Sepal.Length))+geom_point(
+aes(color=Species),alpha=0.5,size=1)+labs(title= 
+"Sepal morphology in the Iris genus", x="Sepal Width (cm)",
+y="Sepal Length (cm)"),+facet_wrap(~Species)
+```
+
+
+## What does this code do? Where's the bug?
+
+```{r, echo=TRUE, eval=FALSE}
+ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length)) +
+  geom_point(aes(color = Species), 
+             alpha = 0.5, size = 1) + 
+  labs(title = "Sepal morphology in the Iris genus",
+       x = "Sepal Width (cm)", 
+       y = "Sepal Length (cm)"), +
+  facet_wrap(~ Species)
+```
