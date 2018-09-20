@@ -1,7 +1,7 @@
 ---
 title: "Data wrangling"
 author: "Paul M. Magwene"
-date: "2/7/2018"
+date: "09/20/2018"
 output: beamer_presentation
 ---
 
@@ -9,6 +9,14 @@ output: beamer_presentation
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+## Real-world data is often messy
+
+Data files you generate or will be given may...
+
+* Be poorly organized
+* Have missing values
+* Contain extraneous information
+* Confounds variables and labels
 
 
 ## Tidy data 
@@ -19,15 +27,6 @@ To facilitate downstream analyses, data should be organized in a manner such tha
   1. Each observation must have its own row.
   1. Each value must have its own cell.
 
-
-## Real-world data is often messy
-
-Data files you generate or will be given may...
-
-* Be poorly organized
-* Have missing values
-* Contain extraneous information
-* Confounds variables and labels
 
 
 ## Example: Starting messy data
@@ -109,7 +108,7 @@ tidy.long %>%
 \normalsize
 
 ```{r, echo = FALSE, out.width= "2.5in", fig.align = "center", fig.cap = "A visualization from tidy long data", eval = TRUE, results = "show"}
-knitr::include_graphics("./tidy-visualization-01.png")
+knitr::include_graphics("./figures/tidy-visualization-01.png")
 ```
 
 
@@ -139,7 +138,7 @@ tidy.wide %>%
 \normalsize
 
 ```{r, echo = FALSE, out.width= "3.5in", fig.align = "center", fig.cap = "A visualization from tidy wide data", eval = TRUE, results = "show", fig.asp = 1}
-knitr::include_graphics("./tidy-visualization-02.png")
+knitr::include_graphics("./figures/tidy-visualization-02.png")
 ```
 
 
@@ -147,5 +146,5 @@ knitr::include_graphics("./tidy-visualization-02.png")
 
 
 ```{r, echo = FALSE, out.width= "90%", fig.align = "center", fig.cap = "A visualization  built by combining tidy long and wide data representations", eval = TRUE, results = "show", fig.asp = 1}
-knitr::include_graphics("./tidy-visualization-03.png")
+knitr::include_graphics("./figures/tidy-visualization-03.png")
 ```
