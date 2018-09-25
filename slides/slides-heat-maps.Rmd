@@ -1,0 +1,76 @@
+---
+title: "Heat maps"
+author: "Paul M. Magwene"
+output: beamer_presentation
+fontsize: "9pt"    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, message=FALSE, comment = "", collapse=TRUE)
+options(width=60)
+```
+
+```{r}
+library(tidyverse)
+set.seed(20180925)
+```
+
+
+## Line plots are a great way to depict ordered data such as time series
+
+```{r}
+shift <- rnorm(500, 0, 5)
+data <- c(sin(replicate(10, seq(-2.25*pi, 0.3*pi, length.out = 50) + rnorm(1, 0, pi/2)))) + rnorm(500, 0, 0.25)
+time <- rep(1:50, 10)
+lvls <- gl(10, 50)
+df <- data_frame(time = time, y = data, line = lvls)
+
+df %>%
+  filter(line == 1) %>%
+  ggplot(aes(x = time, y = y)) +
+  geom_line()
+```
+
+
+## Line plots become unreadable with even a modest numbers of cases
+
+```{r}
+df %>%
+  ggplot(aes(x = time, y = y, color=line)) +
+  geom_line()
+```
+
+## Heat maps are an compact representation than are appropriate for large data
+
+
+```{r}
+library(RColorBrewer)
+color.scheme <- rev(brewer.pal(9,"RdBu"))
+
+df %>%
+  ggplot(aes(x = time, y = line)) +
+  geom_tile(aes(fill = y)) + 
+  scale_fill_gradientn(colors=color.scheme,
+                         limits = c(-2.0, 2.0))  
+```
+
+
+## Sorting the data that underlies a heat map can help to pull out interesting patterns 
+
+```{r}
+peaks <- 
+  df %>% 
+  group_by(line) %>% 
+  summarise(peak.pt = which.max(y)) %>%
+  arrange(peak.pt)
+
+ordering <- peaks$line
+
+df %>%
+  ggplot(aes(x = time, y = line)) +
+  geom_tile(aes(fill = y)) + 
+  scale_fill_gradientn(colors=color.scheme,
+                         limits = c(-2.0, 2.0)) +
+  scale_y_discrete(limits=ordering)
+```
+
