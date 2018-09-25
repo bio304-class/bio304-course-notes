@@ -12,7 +12,7 @@ options(width=60)
 
 ```{r}
 library(tidyverse)
-set.seed(20180925)
+set.seed(201809254)
 ```
 
 
