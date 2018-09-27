@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE, prompt = FALSE, eval = TRUE,
 ```
 
 
-# Instructions
+# Instructions <remove this section before submitting>
 
 Create an R Markdown document and answer the questions below using code blocks that generate the correct outputs. Feel free to also use explanatory text in your markdown document, however **each of your solutions should show how to generate the answer using R code**.
 
@@ -25,7 +25,7 @@ Create an R Markdown document and answer the questions below using code blocks t
 
 **When completed, submit your Markdown file (file ending in `.Rmd`)** via the appropriate submission section on Sakai.
 
-## Tips
+## Tips <remove this section before submitting>
 
 * There should be **one code block per (sub)question**. A good rule of thumb is that each unit of code that produces a "stand alone" answer should be in its own code block.
 
@@ -36,6 +36,12 @@ Create an R Markdown document and answer the questions below using code blocks t
 * Libraries only need to be loaded once.
 
 * Data structures and variables defined in one code block don't need to be repeated in subsequent code blocks (unless they've changed)
+
+* Don't include any unnecessary or extraneous code in your code blocks
+
+* When editing  the markdown template remove unneeded text. For example, the text "Discussion of answer as needed" (part of the template) should not be left in your document. 
+
+* If asked to evaluate code that raises an error, make sure to comment it out in your notebook so the notebook will kniw
 
 * **Knit your code** -- knitting your code creates a "clean" environment in which your code is evaluated and run, helping you to check that your notebook produces the answers you expect.
 
