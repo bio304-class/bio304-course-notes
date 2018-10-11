@@ -457,6 +457,18 @@ cor(births$mAge, births$visits, use = "pairwise.complete")
 3. Calculate the correlation between # of prenatal visits and birth weight
 
 
+## Scatter plot matrix 
+
+- A scatter plot matrix or "pairs plot" depicts all pairwise relationships between variables of interest 
+
+- The package GGally provides a variety of extensions to ggplot including a powerful implementation of the pairs plot (`GGally::ggpairs()`).
+
+
+```{r, out.width="60%", fig.width=6, fig.height=6, fig.align="center"}
+library(GGally)
+ggpairs(births, columns = c("mAge", "fAge", "visits", "weeks", "weight"))
+```
+
 
 
 ## How do we quantify non-linear relationships?
