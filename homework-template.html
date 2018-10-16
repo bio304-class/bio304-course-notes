@@ -313,7 +313,7 @@ $(document).ready(function () {
 
 
 <div id="instructions" class="section level1">
-<h1>Instructions</h1>
+<h1>Instructions <remove this section before submitting></h1>
 <p>Create an R Markdown document and answer the questions below using code blocks that generate the correct outputs. Feel free to also use explanatory text in your markdown document, however <strong>each of your solutions should show how to generate the answer using R code</strong>.</p>
 <p><strong>Please name your file in the following manner:</strong></p>
 <ul>
@@ -321,13 +321,18 @@ $(document).ready(function () {
 </ul>
 <p><strong>When completed, submit your Markdown file (file ending in <code>.Rmd</code>)</strong> via the appropriate submission section on Sakai.</p>
 <div id="tips" class="section level2">
-<h2>Tips</h2>
+<h2>Tips <remove this section before submitting></h2>
 <ul>
 <li><p>There should be <strong>one code block per (sub)question</strong>. A good rule of thumb is that each unit of code that produces a “stand alone” answer should be in its own code block.</p></li>
 <li><p>Format your code for readability. This will help you debug your code and will help us grade your code, increasing the possibility you will get partial credit if you make a mistake somewhere along the line.</p></li>
 <li><p>Use headers and bullet points to delineate different sections, questions, and sub-questions.</p></li>
-<li><p>Libraries only need to be loaded once.</p></li>
+<li><p>Libraries only need to be loaded once. Calls to <code>install.packages()</code> should <strong>not</strong> be included in your R Markdown document.</p></li>
+<li><p>Load data sources from URLs provided by the instructor, rather than local file paths on your computer.</p></li>
 <li><p>Data structures and variables defined in one code block don’t need to be repeated in subsequent code blocks (unless they’ve changed)</p></li>
+<li><p>Don’t include any unnecessary or extraneous code in your code blocks</p></li>
+<li><p>If asked to evaluate code that raises an error, make sure to comment it out in your notebook so the notebook will knit</p></li>
+<li><p>If the printed output is very long, assign the output to a variable and use functions like <code>head()</code> or <code>tail()</code> to show snippets of the output.</p></li>
+<li><p>When editing the markdown template remove unneeded text. For example, the text “Discussion of answer as needed” (part of the template) should not be left in your document. This whole section of tips should be removed too!</p></li>
 <li><p><strong>Knit your code</strong> – knitting your code creates a “clean” environment in which your code is evaluated and run, helping you to check that your notebook produces the answers you expect.</p></li>
 </ul>
 </div>

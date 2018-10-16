@@ -33,15 +33,19 @@ Create an R Markdown document and answer the questions below using code blocks t
 
 * Use headers and bullet points to delineate different sections, questions, and sub-questions.
 
-* Libraries only need to be loaded once.
+* Libraries only need to be loaded once. Calls to `install.packages()` should **not** be included in your R Markdown document. 
+
+* Load data sources from URLs provided by the instructor, rather than local file paths on your computer.
 
 * Data structures and variables defined in one code block don't need to be repeated in subsequent code blocks (unless they've changed)
 
 * Don't include any unnecessary or extraneous code in your code blocks
 
-* When editing  the markdown template remove unneeded text. For example, the text "Discussion of answer as needed" (part of the template) should not be left in your document. 
+* If asked to evaluate code that raises an error, make sure to comment it out in your notebook so the notebook will knit
 
-* If asked to evaluate code that raises an error, make sure to comment it out in your notebook so the notebook will kniw
+* If the printed output is very long, assign the output to a variable and use functions like `head()` or `tail()` to show snippets of the output. 
+
+* When editing the markdown template remove unneeded text. For example, the text "Discussion of answer as needed" (part of the template) should not be left in your document. This whole section of tips should be removed too!
 
 * **Knit your code** -- knitting your code creates a "clean" environment in which your code is evaluated and run, helping you to check that your notebook produces the answers you expect.
 
