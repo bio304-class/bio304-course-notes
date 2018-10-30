@@ -129,6 +129,87 @@ For more in depth discussion of the debate around $p$-values see:
  
 
 
+## Example: Mean tail length in possums
+
+A prior study established that the distribution of tail length in bushtail possums in Queensland is $N(37.9,1.71)$.  A sample of 5 possums sampled from the state of Victoria gives a mean tail length of 35.9 cm.  Is there evidence to suggest that Victorial possum tail lengths differ from those of Queensland possums?
+
+### Null and alternative hypotheses
+
+* $H_0$: There is no difference in mean tail lengths of Queensland and Victoria possums; i.e. $\overline{x} = 37.9$.
+* $H_A$: There is a difference in mean tail lengths of Queensland and Victoria possums, i.e. $\overline{x} \neq 37.9$.
+
+## Mean tail length example, continued
+
+### Sampling distribution of the mean
+
+If the underlying population distribution is $N(\mu,\sigma)$, then the sampling distribution of the mean for samples of size $n$ is $N(\mu,\sigma/\sqrt{n})$.
+
+
+### Tail lengths, null distributions of interest
+
+\medskip
+
+```{r, warning=FALSE, message=FALSE, out.width="70%", fig.align="center", fig.width=6,fig.height=4}
+library(tidyverse)
+null.mu <- 37.9
+null.sigma <- 1.71
+
+tail.distn <- data_frame(taill = seq(32, 44, 0.1),
+                         distn.type = rep("X", length(taill)),
+                     density = dnorm(taill, null.mu, null.sigma))
+
+sample.distn <- data_frame(taill = seq(32, 44, 0.0025),
+                         distn.type = rep("mean(X), n=5", length(taill)),
+                     density = dnorm(taill, null.mu, null.sigma/sqrt(5)))
+
+bind_rows(tail.distn, sample.distn) %>%
+  ggplot(aes(x = taill, y = density, color=distn.type)) +
+  geom_line(size=1) + 
+  labs(x = "X or mean(X)", y = "Density",
+       title = "Population distribution and sampling distribution\nof the mean for samples of size 5\nunder the null hypothesis.") +
+  theme_classic()
+```
+
+## Mean tail length example, continued
+
+```{r,warning=FALSE, message=FALSE, out.width="85%", fig.align="center", fig.width=6,fig.height=4}
+
+vic.mean <- 35.9
+
+sample.distn %>%
+  ggplot(aes(x = taill, y = density, color=distn.type)) +
+  geom_line(size=1) + 
+  geom_segment(aes(x = vic.mean, y = 0.25, 
+                   xend = vic.mean, yend = 0),
+               color='black',
+               arrow = arrow(length = unit(0.5, "cm"))) + 
+  annotate("text", x = vic.mean, y = 0.26, label = "Victoria mean", color = 'black') + 
+  labs(x = "mean(X)", y = "Density",
+       title = "Victoria mean compared to the sampling distribution\nof the mean under the null hypothesis") +
+  theme_classic()
+```
+
+## Mean tail length, cont.
+
+
+```{r,warning=FALSE, message=FALSE, out.width="85%", fig.align="center", fig.width=6,fig.height=4}
+
+vic.mean <- 35.9
+
+sample.distn %>%
+  ggplot(aes(x = taill, y = density, color=distn.type)) +
+  geom_line(size=1) + 
+  geom_vline(xintercept = vic.mean, linetype='dashed') + 
+  geom_vline(xintercept = null.mu + 2, linetype='dashed') + 
+  geom_area(data = filter(sample.distn, taill - null.mu >= 2), fill="gray")  +
+  geom_area(data = filter(sample.distn, taill - null.mu <= -2), fill="gray")  +  
+  labs(x = "mean(X)", y = "Density",
+       title = "P-value of observing the Victoria mean under the null hypothesis") +
+  theme_classic() + 
+  guides(color=FALSE)
+```
+
+
 
 ## Example: Toad handedness
 
