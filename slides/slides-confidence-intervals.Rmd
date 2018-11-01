@@ -1,0 +1,106 @@
+---
+title: "Confidence intervals"
+author: "Paul M. Magwene"
+output: beamer_presentation
+fontsize: "10pt"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, message=FALSE)
+options(width=50)
+```
+
+
+
+## Population of interest
+
+```{r}
+library(tidyverse)
+set.seed(20171114)
+
+height.data <- read_csv("https://github.com/bio304-class/bio304-course-notes/raw/master/datasets/simulated-US-male-height.csv")
+
+true.values <- 
+  height.data %>% 
+  summarize(mean = mean(height), 
+            sd = sd(height))
+
+
+ggplot(height.data, aes(x = height)) +
+  geom_histogram(aes(y = ..density..), bins=50, alpha=0.5) + 
+  geom_density() +
+  labs(x = "Height (cm)", title = "Distribution of Heights in the Population of Interest")
+```
+
+The population distribution of heights is $N(175.7, 15.19)$
+
+
+## Point estimates of the mean for random samples of size 50
+
+```{r, fig.height = 8, fig.width=3, fig.align = "center",  out.width="30%"}
+
+rsample.stats <- function(x, n, var.name) {
+  sample_x <- sample_n(x, n)
+  data_frame(sample.size = n, 
+             sample.mean = mean(sample_x[[var.name]]), 
+             sample.sd = sd(sample_x[[var.name]]),
+             sample.se = sample.sd/sqrt(n),
+             ci.95.left = (sample.mean - 1.96 * sample.se),
+             ci.95.right = (sample.mean + 1.96 * sample.se),
+             ci.includes.mean = (ci.95.left <= true.values$mean) & (ci.95.right >= true.values$mean))
+}
+
+samples.of.50 <-
+  rerun(1000,  rsample.stats(height.data, 50, "height")) %>%
+  bind_rows()
+
+samples <- samples.of.50[1:100,]
+
+samples %>%
+  ggplot(aes(x = sample.mean, y = seq(1,100))) + 
+    geom_vline(xintercept = true.values$mean, color = "gray", alpha=0.75, linetype = "dashed", size = 1) +
+    geom_point() +
+    labs(x = "mean x", y = "sample", 
+         title = "Point estimates of mean height\nfor 100 random samples of size 50")  
+```
+
+
+
+## 95% Confidence intervals for the mean for random samples of size 50
+
+```{r, fig.height = 8, fig.width=4.5, fig.align = "center", out.width="40%"}
+
+samples %>%
+  ggplot(aes(x = sample.mean, y = seq(1,100), color = ci.includes.mean)) + 
+    geom_vline(xintercept = true.values$mean, color = "gray", alpha=0.75, linetype = "dashed", size = 1) +
+    geom_point() +
+    geom_errorbarh(aes(xmin = ci.95.left, xmax = ci.95.right)) +
+    scale_color_manual(values=c("red", "black")) +
+    labs(x = "mean x and estimated CI", y = "sample", 
+         title = "95% CI: mean ± 1.96×SE\nfor 100 samples of size 50")  
+```
+
+
+## Interpretting confidence intervals
+
+From NIST page on confidence intervals:
+
+> As a technical note, a 95 % confidence interval does not mean that there is a 95 % probability that the interval contains the true mean. The interval computed from a given sample either contains the true mean or it does not. Instead, **the level of confidence is associated with the method of calculating the interval** ... That is, for a 95% confidence interval, if many samples are collected and the confidence interval computed, in the long run about 95% of these intervals would contain the true mean.
+
+## Confidence intervals: general formulation
+
+We define the $(100\times\beta)$% confidence interval for the statistic $\phi$ as the interval:
+
+\[
+CI_\beta = \phi_{n} \pm (z \times {SE}_{\phi,n})
+\]
+
+Where:
+
+* $\phi_{n}$ is the statistic of interest in a random sample of size $n$
+* ${SE}_{\phi,n}$ is the standard error of the statistic $\phi$ (via simulation or analytical solution)
+
+And the value of $z$ is chosen so that:
+
+* across many different random samples of size $n$, the true value of the $\phi$ in the population of interest would fall within the interval approximately $(100\times\beta)$% of the time
+
