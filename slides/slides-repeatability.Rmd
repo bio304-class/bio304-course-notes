@@ -1,0 +1,106 @@
+---
+title: "Estimating the Repeatability of a Variable using ANOVA"
+author: "Paul M. Magwene"
+output: beamer_presentation
+fontsize: "10pt"
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, prompt = FALSE, eval = TRUE, 
+                      comment=NA, warning = FALSE, results="markup",
+                      message = FALSE, cache = FALSE)
+options(digits = 4)
+```
+
+
+```{r}
+library(tidyverse)
+library(broom)
+```
+
+## Measurement error
+
+* Nearly every measure of a continuous measurement or assay we apply in biology (and other sicences) has associated with it some "measurement error". 
+
+* This is not "biological variation" of interest, but rather "technical variation" associated with our ability to measure quantities of interest precisely 
+
+
+### Examples:
+  - Have three people independently measure the length of a human femur tot he nearest millimeter. Unless the values are aggressively rounded, there is a high likelihood that you'll get three different values.
+
+
+## Repeatability
+
+ANOVA can be used to estimate the **Repeatability** of a measure, which provides a way to quanify how much of the variance we observe between individuals is due to measurement error.
+
+### Experimental steps
+
+* Repeatedly but independently measure the same variable in the same individual or other unit of observation
+* Carry out same repeated measurements across individuals
+
+## Repeatability: Statistical steps
+
+* Calculate $MS_\text{groups}$ and $MS_\text{error}$ where individuals are the grouping unit.
+* Estimate the variance among groups, $s_A^2$ as:
+\[
+s_A^2 = \frac{MS_\text{groups} - MS_\text{error}}{n}
+\]
+  - where $n$ is the number of replicates per individual
+
+* Estimate the repeatability as:
+\[
+\text{Repeatability} = \frac{s_A^2}{s_A^2 + MS_\text{error}}
+\]
+
+* $0 \leq \text{Repeatability} \leq 1$; values near zero indicate nearly all variance is due to measurement error, values near one indicate small fraction of variance due to measurement error
+
+
+## Repeatability: Walking stick example
+
+Nosil and Crespi measured various morphological features of walking stick insects from digital photographs.  For each specimen they took two independent photographs and measured femur length (in cm) on each photograph. 
+
+```{r, fig.width = 3.25, fig.height = 2.5, fig.align="center"}
+walking.sticks <- read_csv("https://github.com/bio304-class/bio304-course-notes/raw/master/datasets/ABD-walking-sticks.csv")
+
+by.specimen <-
+  walking.sticks %>%
+  group_by(specimen) %>%
+  summarize(min.fl = min(femurLength), max.fl = max(femurLength), avg.fl = 0.5*(min.fl + max.fl)) %>%
+  arrange(avg.fl) %>%
+  ungroup() %>%
+  mutate(rank.fl = rank(avg.fl, ties.method = "first"))
+
+ggplot(by.specimen, aes(x = rank.fl)) + 
+  geom_point(aes(y = min.fl), color="firebrick") + 
+  geom_point(aes(y = max.fl + 0.0025), color="firebrick") +
+  geom_linerange(aes(ymin = min.fl, ymax = max.fl + 0.0025)) +
+  labs(x = "Individual walking sticks", y = "Femur length (cm)") + 
+  theme_classic()+
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())  
+```
+
+
+## Repeatability: Walking stick analysis
+
+\footnotesize
+```{r, echo=TRUE}
+sticks.aov <- aov(femurLength ~ as.factor(specimen), 
+                  data = walking.sticks)
+sticks.table <- tidy(sticks.aov)
+sticks.table
+```
+
+
+```{r, echo = TRUE}
+MS.groups <- sticks.table$meansq[1]
+MS.error <- sticks.table$meansq[2]
+sA = (MS.groups - MS.error)/2
+repeatability = sA/(sA + MS.error)
+```
+
+\normalsize
+From the table we calculate:
+
+  * $s_A^2 =$ `r sA`
+  * $\text{Repeatability} =$ `r repeatability`
