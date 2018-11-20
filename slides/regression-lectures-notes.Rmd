@@ -1,0 +1,50 @@
+---
+title: "Code for regression lecture"
+output: html_notebook
+---
+
+
+```{r}
+library(tidyverse)
+library(broom)
+library(ggfortify)
+```
+
+```{r}
+lions <- read_csv("https://raw.githubusercontent.com/bio304-class/bio304-course-notes/master/datasets/ABD-lion-noses.csv")
+glimpse(lions)
+```
+
+```{r}
+lm.lions <- lm(ageInYears ~ proportionBlack, data=lions)
+```
+
+```{r}
+tidy(lm.lions)
+```
+
+```{r}
+lions.augmented <- augment(lm.lions, lions)
+glimpse(lions.augmented)
+```
+
+```{r}
+lions.augmented %>%
+  ggplot(aes(proportionBlack, .std.resid)) + 
+  geom_point(size=2) + 
+  geom_hline(yintercept = 0, linetype = 'dashed', color='firebrick') +
+  labs(x = "Predictor (Proportion black)",
+       y = "Residuals") 
+```
+
+
+
+```{r}
+lions.augmented %>%
+  ggplot(aes(sample = .std.resid)) + 
+  geom_qq() + 
+  geom_qq_line(color='firebrick') + 
+  labs(x = "Theoretical quantiles",
+       y = "Standardized Residuals") 
+```
+
