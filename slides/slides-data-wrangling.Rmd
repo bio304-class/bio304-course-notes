@@ -1,7 +1,6 @@
 ---
 title: "Data wrangling"
 author: "Paul M. Magwene"
-date: "09/20/2018"
 output: beamer_presentation
 ---
 

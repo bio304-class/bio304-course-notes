@@ -23,7 +23,7 @@ Create an R Markdown document and answer the questions below using code blocks t
 
 * `Lastname_Firstinitial_Assignment0X.Rmd` -- For example: `Magwene_P_Assignment01.Rmd`
 
-**When completed, submit your Markdown file (file ending in `.Rmd`)** via the appropriate submission section on Sakai.
+**When completed, submit your Markdown file (file ending in `.Rmd`) and knit HTML file (file ending in `.html`)** via the appropriate submission section on Sakai.
 
 ## Tips <remove this section before submitting>
 
